@@ -1,34 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: loksai-eta-deploy
+  name: paragv14-deploy
   labels:
-    app: loksai-eta-deploy-lbl
+    app: paragv14-deploy-lbl
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: loksai-eta-app
+      app: paragv14-app
   template:
     metadata:
       labels:
-        app: loksai-eta-app
+        app: paragv14-app
     spec:
       containers:
-      - name: loksai-eta-container
-        image: loksaieta/sa-wd-webapp
+      - name: paragv14-container
+        image: paragv14/sa-mywebapp:latest
         ports:
         - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: loksai-eta-np-service
+  name: paragv14-np-service
   labels:
-    app: loksai-eta-app
+    app: paragv14-np-app
 spec:
   selector:
-    app: loksai-eta-deploy-lbl
+    app: paragv14-app
 
   type: NodePort
   ports:
